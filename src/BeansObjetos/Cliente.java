@@ -1,7 +1,21 @@
 
-package Objetos;
+package BeansObjetos;
 
 public class Cliente {
+
+    /**
+     * @return the estado
+     */
+    public String getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
     /**
      * @return the endereço
@@ -88,23 +102,16 @@ public class Cliente {
         this.sexo = sexo;
     }
        
-    
        //Atributos:
-       private String cpf ="";
-       private String nome="";
-       private String endereço="";
-       private String numero="";
-       private String cidade="";
-       private String tel1="";
-       private String tel2="";
-       private String email="";
-       private String sexo="";
-       
-       //Construtor:
-
-    public Cliente() {
-    }
-       
-       
-       
+       private String cpf;
+       private String nome;
+       private String endereço;
+       private String numero;
+       private String cidade;
+       private String tel1;
+       private String tel2;
+       private String email;
+       private String sexo;
+       private String estado;
+                          
 }

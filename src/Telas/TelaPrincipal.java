@@ -29,6 +29,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlSair.setVisible(false);
         
         //Setar Imagens nos componentes{
+        
+        ImageIcon Produto = new ImageIcon("src/imagens/IconeProduto.png");
+        Produto.setImage(Produto.getImage().getScaledInstance(
+                 btnTabelaProduto.getWidth(),
+                 btnTabelaProduto.getHeight(),
+                 1));
+        
+        btnTabelaProduto.setIcon(Produto);
+   
+        ImageIcon Logo = new ImageIcon("src/imagens/LogoLoja.png");
+        Logo.setImage(Logo.getImage().getScaledInstance(
+                lblLogo.getWidth(), 
+                lblLogo.getHeight(),
+                1));
+        lblLogo.setIcon(Logo);
+        lblLogo.setBorder(null);
+        
+        
         ImageIcon Menu = new ImageIcon("src/imagens/IconeMenu.png");
         Menu.setImage(Menu.getImage().getScaledInstance(
                 btnMenu.getWidth(), 
@@ -84,6 +102,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnTabelaClientes = new javax.swing.JButton();
         pnlTabelaFuncionario = new javax.swing.JPanel();
         btnTabelaFuncionario = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
+        pnlTabelaProduto = new javax.swing.JPanel();
+        btnTabelaProduto = new javax.swing.JButton();
         pnlFundoMenu = new javax.swing.JPanel();
         pnlNovoCliente = new javax.swing.JPanel();
         btnNovoCliente = new javax.swing.JButton();
@@ -108,6 +129,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlFundoBranco.setLayout(null);
 
         pnlTabelaCliente.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTabelaCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pnlTabelaCliente.setLayout(null);
 
         btnTabelaClientes.setToolTipText("Tabela Clientes");
@@ -135,6 +157,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pnlTabelaCliente.setBounds(70, 70, 100, 100);
 
         pnlTabelaFuncionario.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTabelaFuncionario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pnlTabelaFuncionario.setLayout(null);
 
         btnTabelaFuncionario.setToolTipText("Tabela Funcionarios");
@@ -155,6 +178,38 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pnlFundoBranco.add(pnlTabelaFuncionario);
         pnlTabelaFuncionario.setBounds(180, 70, 100, 100);
+
+        lblLogo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        pnlFundoBranco.add(lblLogo);
+        lblLogo.setBounds(360, 300, 100, 90);
+
+        pnlTabelaProduto.setBackground(new java.awt.Color(255, 255, 255));
+        pnlTabelaProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        pnlTabelaProduto.setLayout(null);
+
+        btnTabelaProduto.setToolTipText("Tabela de Produtos");
+        btnTabelaProduto.setBorder(null);
+        btnTabelaProduto.setContentAreaFilled(false);
+        btnTabelaProduto.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnTabelaProdutoMouseMoved(evt);
+            }
+        });
+        btnTabelaProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTabelaProdutoMouseExited(evt);
+            }
+        });
+        btnTabelaProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabelaProdutoActionPerformed(evt);
+            }
+        });
+        pnlTabelaProduto.add(btnTabelaProduto);
+        btnTabelaProduto.setBounds(10, 10, 80, 80);
+
+        pnlFundoBranco.add(pnlTabelaProduto);
+        pnlTabelaProduto.setBounds(290, 70, 100, 100);
 
         getContentPane().add(pnlFundoBranco);
         pnlFundoBranco.setBounds(260, 50, 480, 400);
@@ -397,6 +452,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Usuario deslogado");
     }//GEN-LAST:event_btnSairActionPerformed
 
+    private void btnTabelaProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTabelaProdutoMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTabelaProdutoMouseMoved
+
+    private void btnTabelaProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTabelaProdutoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTabelaProdutoMouseExited
+
+    private void btnTabelaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabelaProdutoActionPerformed
+        TelaTabelaProduto tela = new TelaTabelaProduto();
+        tela.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnTabelaProdutoActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -416,7 +486,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnTabelaClientes;
     private javax.swing.JButton btnTabelaFuncionario;
+    private javax.swing.JButton btnTabelaProduto;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JPanel pnlFuncionario;
     private javax.swing.JPanel pnlFundoBranco;
     private javax.swing.JPanel pnlFundoMenu;
@@ -425,5 +497,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSair;
     private javax.swing.JPanel pnlTabelaCliente;
     private javax.swing.JPanel pnlTabelaFuncionario;
+    private javax.swing.JPanel pnlTabelaProduto;
     // End of variables declaration//GEN-END:variables
 }

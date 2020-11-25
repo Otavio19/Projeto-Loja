@@ -4,6 +4,9 @@ package Telas;
 import static java.lang.Thread.sleep;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import BeansObjetos.Funcionario;
+import Conexoes.Conexao;
+import DaoObjetos.DaoFuncionario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,6 +19,10 @@ import javax.swing.JOptionPane;
  * @author Otavio
  */
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
+    
+    Funcionario ObjetoFuncionario = new Funcionario();
+    Conexao conex = new Conexao();
+    DaoFuncionario DaoFuncionario = new DaoFuncionario();
 
     public TelaCadastroFuncionario() {
         initComponents();
@@ -58,7 +65,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnMenu = new javax.swing.JButton();
         pnlCadastro = new javax.swing.JPanel();
-        txtSalario = new javax.swing.JTextField();
         txtSenha = new javax.swing.JFormattedTextField();
         txtLogin = new javax.swing.JFormattedTextField();
         lblEstado = new javax.swing.JLabel();
@@ -73,7 +79,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         lblSexo = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        jComboBoxSexo = new javax.swing.JComboBox<>();
+        txtSexo = new javax.swing.JComboBox<>();
         txtCidade = new javax.swing.JTextField();
         txtNumero = new javax.swing.JTextField();
         txtBairro = new javax.swing.JTextField();
@@ -83,7 +89,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         lblCPF = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         lblSalario = new javax.swing.JLabel();
-        jComboBoxEstado = new javax.swing.JComboBox<>();
+        txtEstado = new javax.swing.JComboBox<>();
         jSeparatorLogin = new javax.swing.JSeparator();
         jSeparatorCpf = new javax.swing.JSeparator();
         jSeparatorNome = new javax.swing.JSeparator();
@@ -98,6 +104,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jSeparatorSenha = new javax.swing.JSeparator();
         txt1Tel = new javax.swing.JFormattedTextField();
         txt2Tel = new javax.swing.JFormattedTextField();
+        txtSalario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -201,12 +208,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         pnlCadastro.setForeground(new java.awt.Color(255, 255, 255));
         pnlCadastro.setLayout(null);
 
-        txtSalario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtSalario.setBorder(null);
-        txtSalario.setOpaque(false);
-        pnlCadastro.add(txtSalario);
-        txtSalario.setBounds(460, 190, 120, 30);
-
         txtSenha.setBorder(null);
         try {
             txtSenha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###")));
@@ -295,11 +296,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         pnlCadastro.add(txtEmail);
         txtEmail.setBounds(90, 330, 270, 30);
 
-        jComboBoxSexo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Não Informado" }));
-        jComboBoxSexo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlCadastro.add(jComboBoxSexo);
-        jComboBoxSexo.setBounds(90, 370, 170, 30);
+        txtSexo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Não Informado" }));
+        txtSexo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlCadastro.add(txtSexo);
+        txtSexo.setBounds(90, 370, 170, 30);
 
         txtCidade.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtCidade.setBorder(null);
@@ -356,11 +357,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         pnlCadastro.add(lblSalario);
         lblSalario.setBounds(370, 190, 80, 30);
 
-        jComboBoxEstado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
-        jComboBoxEstado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnlCadastro.add(jComboBoxEstado);
-        jComboBoxEstado.setBounds(90, 410, 120, 30);
+        txtEstado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        txtEstado.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnlCadastro.add(txtEstado);
+        txtEstado.setBounds(90, 410, 120, 30);
 
         jSeparatorLogin.setForeground(new java.awt.Color(0, 0, 0));
         pnlCadastro.add(jSeparatorLogin);
@@ -430,6 +431,11 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         pnlCadastro.add(txt2Tel);
         txt2Tel.setBounds(90, 290, 270, 30);
 
+        txtSalario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtSalario.setBorder(null);
+        pnlCadastro.add(txtSalario);
+        txtSalario.setBounds(460, 190, 120, 30);
+
         getContentPane().add(pnlCadastro);
         pnlCadastro.setBounds(260, 0, 590, 510);
 
@@ -461,14 +467,30 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         txtLogin.setText("");
         txtSenha.setText("");
         txtSalario.setText("");
-        jComboBoxSexo.setSelectedIndex(0);
-        jComboBoxEstado.setSelectedIndex(0);
+        txtSexo.setSelectedIndex(0);
+        txtEstado.setSelectedIndex(0);
         //}Limpar Campos;
         
     }//GEN-LAST:event_btnNovoClienteActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        // TODO add your handling code here:
+        
+        ObjetoFuncionario.setCpf(txtCpf.getText());
+        ObjetoFuncionario.setNome(txtNome.getText());
+        ObjetoFuncionario.setRua(txtRua.getText());
+        ObjetoFuncionario.setBairro(txtBairro.getText());
+        ObjetoFuncionario.setNumero(txtNumero.getText());
+        ObjetoFuncionario.setCidade(txtCidade.getText());
+        ObjetoFuncionario.setTel1(txt1Tel.getText());
+        ObjetoFuncionario.setTel2(txt2Tel.getText());
+        ObjetoFuncionario.setEmail(txtEmail.getText());
+        ObjetoFuncionario.setSexo((String) txtSexo.getSelectedItem());
+        ObjetoFuncionario.setEstado((String) txtEstado.getSelectedItem());
+        ObjetoFuncionario.setLogin(txtLogin.getText());
+        ObjetoFuncionario.setSenha(txtSenha.getText());
+        ObjetoFuncionario.setSalario(txtSalario.getText());
+        
+        DaoFuncionario.SalvarFuncionario(ObjetoFuncionario);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -485,8 +507,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         txtLogin.setText("");
         txtSenha.setText("");
         txtSalario.setText("");
-        jComboBoxSexo.setSelectedIndex(0);
-        jComboBoxEstado.setSelectedIndex(0);
+        txtSexo.setSelectedIndex(0);
+        txtEstado.setSelectedIndex(0);
         //}Limpar Campos;
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -593,8 +615,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btnNovoCliente;
     private javax.swing.JButton btnSair;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> jComboBoxEstado;
-    private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JSeparator jSeparator1Tel;
     private javax.swing.JSeparator jSeparator2Tel;
     private javax.swing.JSeparator jSeparatorBairro;
@@ -633,11 +653,13 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JComboBox<String> txtEstado;
     private javax.swing.JFormattedTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;
     private javax.swing.JTextField txtSalario;
     private javax.swing.JFormattedTextField txtSenha;
+    private javax.swing.JComboBox<String> txtSexo;
     // End of variables declaration//GEN-END:variables
 }

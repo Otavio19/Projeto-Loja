@@ -18,6 +18,15 @@ public class TelaLogin extends javax.swing.JFrame {
         
         
         //Setar Imagens Nos Componentes
+        
+        ImageIcon Logo = new ImageIcon("src/imagens/Logo_Loja.JPG");
+        Logo.setImage(Logo.getImage().getScaledInstance(
+                lblLogo.getWidth(), 
+                lblLogo.getHeight(),
+                1));
+        lblLogo.setIcon(Logo);
+        
+        
         ImageIcon Minimizar = new ImageIcon("src/imagens/IconeMinimizar.png");
         Minimizar.setImage(Minimizar.getImage().getScaledInstance(
                 btnMinimizar.getWidth(), 
@@ -97,11 +106,13 @@ public class TelaLogin extends javax.swing.JFrame {
         pnlLogin.add(txtLogin);
         txtLogin.setBounds(100, 70, 110, 30);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(null);
 
-        btnAcessar.setFont(new java.awt.Font("Arial Narrow", 0, 24)); // NOI18N
+        btnAcessar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnAcessar.setForeground(new java.awt.Color(255, 255, 255));
         btnAcessar.setText("Acessar");
+        btnAcessar.setBorder(null);
         btnAcessar.setContentAreaFilled(false);
         btnAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,31 +172,17 @@ public class TelaLogin extends javax.swing.JFrame {
         txtSenha.setBounds(100, 110, 110, 30);
 
         getContentPane().add(pnlLogin);
-        pnlLogin.setBounds(220, 0, 240, 260);
+        pnlLogin.setBounds(310, 0, 240, 280);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
-        bg.setLayout(bgLayout);
-        bgLayout.setHorizontalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        bgLayout.setVerticalGroup(
-            bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bgLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
+        bg.setLayout(null);
+        bg.add(lblLogo);
+        lblLogo.setBounds(0, 0, 310, 280);
 
         getContentPane().add(bg);
-        bg.setBounds(0, 0, 220, 260);
+        bg.setBounds(0, 0, 310, 280);
 
-        setSize(new java.awt.Dimension(458, 258));
+        setSize(new java.awt.Dimension(548, 280));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

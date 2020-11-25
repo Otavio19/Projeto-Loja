@@ -3,9 +3,31 @@ Métodos Get/Set dos Atributos da Tela "PRODUTO"
 */
 
 
-package Objetos;
+package BeansObjetos;
 
-public class Produto {
+public class BeansProduto {
+
+    /**
+     * @return the codigo
+     */
+    public int getCodigo() {
+        return codigo;
+    }
+
+    /**
+     * @param codigo the codigo to set
+     */
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getPesquisa() {
+        return pesquisa;
+    }
+
+    public void setPesquisa(String pesquisa) {
+        this.pesquisa = pesquisa;
+    }
 
     public String getNome() {
         return Nome;
@@ -65,5 +87,6 @@ public class Produto {
     private String Email;
     private String Fornecedor;
     private String Marca;
-    
+    private String pesquisa;
+    private int codigo;
 }

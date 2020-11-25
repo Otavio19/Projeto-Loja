@@ -1,15 +1,20 @@
 package Telas;
 
 
-import Objetos.Cliente;
+import Conexoes.Conexao;
+import BeansObjetos.Cliente;
 import static java.lang.Thread.sleep;
 import java.util.HashSet;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import DaoObjetos.DaoCliente;
 
 public class TelaCadastroCliente extends javax.swing.JFrame {
     
-    Cliente novoCliente = new Cliente();
+    
+    Conexao conex = new Conexao();
+    Cliente ObjetoCliente = new Cliente();
+    DaoCliente DaoCliente = new DaoCliente();
     
     
     public TelaCadastroCliente() {
@@ -76,7 +81,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         jSeparator2Tel = new javax.swing.JSeparator();
         jSeparatorEmail = new javax.swing.JSeparator();
         lblEstado = new javax.swing.JLabel();
-        jComboBoxEstado = new javax.swing.JComboBox<>();
+        txtEstado = new javax.swing.JComboBox<>();
         txtEmail = new javax.swing.JTextField();
         txCidade = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
@@ -162,7 +167,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         txtCpf.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         txtCpf.setOpaque(false);
         pnlFundoCadastro.add(txtCpf);
-        txtCpf.setBounds(110, 40, 120, 30);
+        txtCpf.setBounds(110, 40, 140, 30);
 
         lblCPF.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         lblCPF.setText("CPF:");
@@ -191,7 +196,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
 
         jSeparatorCpf.setForeground(new java.awt.Color(0, 0, 0));
         pnlFundoCadastro.add(jSeparatorCpf);
-        jSeparatorCpf.setBounds(110, 70, 120, 10);
+        jSeparatorCpf.setBounds(110, 70, 140, 10);
 
         jSeparatorNome.setForeground(new java.awt.Color(0, 0, 0));
         pnlFundoCadastro.add(jSeparatorNome);
@@ -222,24 +227,28 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         pnlFundoCadastro.add(lblEstado);
         lblEstado.setBounds(30, 360, 80, 30);
 
-        jComboBoxEstado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
-        jComboBoxEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlFundoCadastro.add(jComboBoxEstado);
-        jComboBoxEstado.setBounds(110, 360, 120, 30);
+        txtEstado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        txtEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlFundoCadastro.add(txtEstado);
+        txtEstado.setBounds(110, 360, 120, 30);
 
+        txtEmail.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         txtEmail.setBorder(null);
         pnlFundoCadastro.add(txtEmail);
         txtEmail.setBounds(110, 280, 270, 30);
 
+        txCidade.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         txCidade.setBorder(null);
         pnlFundoCadastro.add(txCidade);
         txCidade.setBounds(110, 160, 270, 30);
 
+        txtNome.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         txtNome.setBorder(null);
         pnlFundoCadastro.add(txtNome);
         txtNome.setBounds(110, 80, 270, 30);
 
+        txtEndereço.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         txtEndereço.setBorder(null);
         pnlFundoCadastro.add(txtEndereço);
         txtEndereço.setBounds(110, 120, 270, 30);
@@ -361,7 +370,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      txt1Tel.setText("");
      txtEmail.setText("");
      txtSexo.setSelectedIndex(0);
-     jComboBoxEstado.setSelectedIndex(0);
+     txtEstado.setSelectedIndex(0);
      
      
      //}
@@ -369,7 +378,18 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNovoCliente1ActionPerformed
 
     private void btnSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvar1ActionPerformed
-
+        ObjetoCliente.setCpf(txtCpf.getText());
+        ObjetoCliente.setNome(txtNome.getText());
+        ObjetoCliente.setEndereço(txtEndereço.getText());
+        ObjetoCliente.setCidade(txCidade.getText());
+        ObjetoCliente.setTel1(txt1Tel.getText());
+        ObjetoCliente.setTel2(txt2Tel.getText());
+        ObjetoCliente.setEmail(txtEmail.getText());
+        ObjetoCliente.setSexo((String) txtSexo.getSelectedItem());
+        ObjetoCliente.setEstado((String)txtEstado.getSelectedItem());   
+        
+        DaoCliente.SalvarCliente(ObjetoCliente);
+        
     }//GEN-LAST:event_btnSalvar1ActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
@@ -384,7 +404,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
      txt1Tel.setText("");
      txtEmail.setText("");
      txtSexo.setSelectedIndex(0);
-     jComboBoxEstado.setSelectedIndex(0);
+     txtEstado.setSelectedIndex(0);
      //}
      
     }//GEN-LAST:event_btnCancelar1ActionPerformed
@@ -489,7 +509,6 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnNovoCliente1;
     private javax.swing.JButton btnSair1;
     private javax.swing.JButton btnSalvar1;
-    private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JSeparator jSeparator1Tel;
     private javax.swing.JSeparator jSeparator2Tel;
     private javax.swing.JSeparator jSeparatorCidade;
@@ -519,6 +538,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEndereço;
+    private javax.swing.JComboBox<String> txtEstado;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JComboBox<String> txtSexo;

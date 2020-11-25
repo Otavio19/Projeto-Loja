@@ -7,7 +7,7 @@ package Telas;
 
 import Conexoes.Conexao;
 import DaoObjetos.DaoProdutos;
-import Objetos.Produto;
+import BeansObjetos.BeansProduto;
 import static java.lang.Thread.sleep;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,7 @@ import javax.swing.ImageIcon;
 
 public class TelaCadastroProdutos extends javax.swing.JFrame {
 
-    Produto ObjetoProduto = new Produto();
+    BeansProduto ObjetoProduto = new BeansProduto();
     Conexao conex = new Conexao();
     DaoProdutos DaoProduto = new DaoProdutos();
     
@@ -357,7 +357,7 @@ public class TelaCadastroProdutos extends javax.swing.JFrame {
         ObjetoProduto.setFornecedor(txtFornecedor.getText());
         ObjetoProduto.setMarca(txtMarca.getText());
         
-        DaoProduto.Salvar(ObjetoProduto);
+        DaoProduto.SalvarProdutos(ObjetoProduto);
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed

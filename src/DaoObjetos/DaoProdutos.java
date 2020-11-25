@@ -5,7 +5,7 @@ Méotods para a TABELA PRODUTO
 package DaoObjetos;
 
 import Conexoes.Conexao;
-import Objetos.Produto;
+import BeansObjetos.BeansProduto;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,9 +15,9 @@ import javax.swing.JOptionPane;
 public class DaoProdutos {
     
     Conexao conex = new Conexao();   //Instanciamos a conexão do Banco de Dados
-    Produto produto = new Produto(); //Instanciamos os atributos da Classe Produto do Pacote Objetos
+    BeansProduto produto = new BeansProduto(); //Instanciamos os atributos da Classe Produto do Pacote Objetos
     
-    public void Salvar(Produto produto){
+    public void SalvarProdutos(BeansProduto produto){
         
         conex.conectar();
         try {
@@ -34,6 +34,23 @@ public class DaoProdutos {
         
         conex.desconecta();
         
+    }
+    
+    public BeansProduto buscaProduto(BeansProduto prod){
+        conex.conectar();
+        conex.executaSql("select * from produto where id like '%" + prod.getPesquisa()+"%'");
+        try {
+            conex.rs.first();
+            prod.setCodigo(conex.rs.getInt("id"));
+            prod.setNome(conex.rs.getString("Nome"));
+            prod.setFornecedor(conex.rs.getString("fornecedor"));
+            prod.setMarca(conex.rs.getString("marca"));             
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao buscar produto: \n"+ex);
+        }
+        conex.desconecta();
+        return prod;
     }
     
 }
